@@ -1,167 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MR2PAY – Reel Based Earning Platform</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>MR2PAY – Explore Reels</title>
 
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card: #111827;
-      --primary: #22c55e;
-      --secondary: #38bdf8;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-    }
+<style>
+:root{
+  --bg:#0b0f1a;
+  --card:#141a2b;
+  --text:#eaeaf0;
+  --muted:#9aa3b2;
+  --accent:#22c55e;
+}
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont;
+}
 
-    body {
-      background: linear-gradient(180deg, #020617, #0f172a);
-      color: var(--text);
-    }
+body{
+  background:var(--bg);
+  color:var(--text);
+}
 
-    header {
-      padding: 18px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #1f2933;
-    }
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(11,15,26,0.85);
+  backdrop-filter: blur(10px);
+  padding:14px 18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid #1f253a;
+}
 
-    header h1 {
-      font-size: 22px;
-      color: var(--primary);
-    }
+.logo{
+  font-size:20px;
+  font-weight:800;
+  color:var(--accent);
+}
 
-    header button {
-      background: var(--secondary);
-      border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      color: #000;
-      font-weight: 600;
-      cursor: pointer;
-    }
+.login-btn{
+  background:#1f2937;
+  border:none;
+  color:white;
+  padding:8px 14px;
+  border-radius:20px;
+  font-size:14px;
+  cursor:pointer;
+}
 
-    .hero {
-      padding: 50px 20px;
-      text-align: center;
-    }
+/* FEED */
+.feed{
+  padding:16px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+  gap:14px;
+}
 
-    .hero h2 {
-      font-size: 32px;
-      margin-bottom: 12px;
-    }
+/* CARD */
+.card{
+  background:var(--card);
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .2s;
+}
 
-    .hero p {
-      color: var(--muted);
-      max-width: 600px;
-      margin: auto;
-    }
+.card:hover{
+  transform:scale(1.03);
+}
 
-    .hero .cta {
-      margin-top: 25px;
-    }
+.thumb{
+  height:220px;
+  background:linear-gradient(135deg,#1e293b,#020617);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#94a3b8;
+  font-size:14px;
+}
 
-    .hero .cta button {
-      background: var(--primary);
-      border: none;
-      padding: 14px 24px;
-      border-radius: 10px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-    }
+.card-info{
+  padding:10px;
+}
 
-    .section {
-      padding: 30px 20px;
-    }
+.card-info h4{
+  font-size:14px;
+  font-weight:600;
+  margin-bottom:4px;
+}
 
-    .section h3 {
-      margin-bottom: 16px;
-    }
+.card-info p{
+  font-size:12px;
+  color:var(--muted);
+}
 
-    .reel-feed {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 14px;
-    }
+/* BOTTOM NAV (optional feel like app) */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:#0b0f1a;
+  border-top:1px solid #1f253a;
+  display:flex;
+  justify-content:space-around;
+  padding:10px 0;
+}
 
-    .reel {
-      background: var(--card);
-      border-radius: 14px;
-      height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .earn-box {
-      background: linear-gradient(135deg, #052e16, #022c22);
-      border: 1px solid #14532d;
-      padding: 20px;
-      border-radius: 16px;
-    }
-
-    footer {
-      padding: 25px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-      border-top: 1px solid #1f2933;
-    }
-  </style>
+.bottom-nav span{
+  font-size:13px;
+  color:var(--muted);
+}
+</style>
 </head>
+
 <body>
 
-  <header>
-    <h1>MR2PAY</h1>
-    <button>Login</button>
-  </header>
+<header>
+  <div class="logo">MR2PAY</div>
+  <button class="login-btn">Login</button>
+</header>
 
-  <section class="hero">
-    <h2>Turn Reels Into Real Earnings</h2>
-    <p>
-      Upload short reels, share your unique link, bring traffic and earn from ads.
-      Simple, fast and creator-friendly.
-    </p>
-    <div class="cta">
-      <button>Start Earning</button>
+<section class="feed">
+  <!-- Reel Card -->
+  <div class="card">
+    <div class="thumb">Reel Preview</div>
+    <div class="card-info">
+      <h4>Funny Reel 😂</h4>
+      <p>12.4k views</p>
     </div>
-  </section>
+  </div>
 
-  <section class="section">
-    <h3>🔥 Trending Reels</h3>
-    <div class="reel-feed">
-      <div class="reel">Reel Preview</div>
-      <div class="reel">Reel Preview</div>
-      <div class="reel">Reel Preview</div>
-      <div class="reel">Reel Preview</div>
+  <div class="card">
+    <div class="thumb">Reel Preview</div>
+    <div class="card-info">
+      <h4>Motivation 🔥</h4>
+      <p>9.8k views</p>
     </div>
-  </section>
+  </div>
 
-  <section class="section">
-    <div class="earn-box">
-      <h3>💰 How You Earn</h3>
-      <p>
-        Every view counts. Ads are shown inside reels.
-        RPM is calculated transparently and shared with creators.
-      </p>
+  <div class="card">
+    <div class="thumb">Reel Preview</div>
+    <div class="card-info">
+      <h4>Life Hack 💡</h4>
+      <p>18.1k views</p>
     </div>
-  </section>
+  </div>
 
-  <footer>
-    © 2025 MR2PAY • Reel Based Earning Platform • Built for Creators
-  </footer>
+  <div class="card">
+    <div class="thumb">Reel Preview</div>
+    <div class="card-info">
+      <h4>Sad Story 💔</h4>
+      <p>7.2k views</p>
+    </div>
+  </div>
+</section>
+
+<div class="bottom-nav">
+  <span>Home</span>
+  <span>Explore</span>
+  <span>Upload</span>
+  <span>Profile</span>
+</div>
 
 </body>
 </html>
