@@ -3,15 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>MR2PAY – Explore Reels</title>
+<title>MR2PAY – Creator Economy</title>
 
 <style>
 :root{
-  --bg:#0b0f1a;
-  --card:#141a2b;
-  --text:#eaeaf0;
-  --muted:#9aa3b2;
-  --accent:#22c55e;
+  --bg:#070b14;
+  --card:#0f172a;
+  --glass:rgba(255,255,255,0.08);
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --neon:#22c55e;
+  --blue:#38bdf8;
 }
 
 *{
@@ -22,41 +24,64 @@
 }
 
 body{
-  background:var(--bg);
+  background:radial-gradient(circle at top,#0b1220,#020617);
   color:var(--text);
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 header{
   position:sticky;
   top:0;
-  z-index:10;
-  background:rgba(11,15,26,0.85);
-  backdrop-filter: blur(10px);
+  z-index:20;
   padding:14px 18px;
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid #1f253a;
+  backdrop-filter: blur(12px);
+  background:rgba(7,11,20,0.75);
+  border-bottom:1px solid rgba(255,255,255,0.05);
 }
 
+/* 3D LOGO */
 .logo{
-  font-size:20px;
-  font-weight:800;
-  color:var(--accent);
+  font-size:22px;
+  font-weight:900;
+  letter-spacing:1px;
+  background:linear-gradient(135deg,#22c55e,#38bdf8);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:
+    0 0 12px rgba(34,197,94,.6),
+    0 0 25px rgba(56,189,248,.4);
+  transform: perspective(600px) rotateX(8deg);
 }
 
-.login-btn{
-  background:#1f2937;
+/* SEARCH */
+.search{
+  flex:1;
+  margin:0 14px;
+}
+.search input{
+  width:100%;
+  background:var(--glass);
   border:none;
+  padding:10px 14px;
+  border-radius:30px;
   color:white;
-  padding:8px 14px;
-  border-radius:20px;
-  font-size:14px;
-  cursor:pointer;
+  outline:none;
 }
 
-/* FEED */
+/* LOGIN */
+.login{
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+  border:none;
+  padding:8px 16px;
+  border-radius:20px;
+  font-weight:600;
+  color:#052e16;
+}
+
+/* ===== FEED ===== */
 .feed{
   padding:16px;
   display:grid;
@@ -64,60 +89,80 @@ header{
   gap:14px;
 }
 
-/* CARD */
 .card{
-  background:var(--card);
-  border-radius:16px;
+  background:linear-gradient(180deg,#0f172a,#020617);
+  border-radius:18px;
   overflow:hidden;
-  cursor:pointer;
-  transition:transform .2s;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.6),
+    inset 0 0 0 1px rgba(255,255,255,.05);
+  transform: perspective(900px) rotateX(6deg);
+  transition:.25s;
 }
 
 .card:hover{
-  transform:scale(1.03);
+  transform:scale(1.05) rotateX(0deg);
 }
 
 .thumb{
   height:220px;
-  background:linear-gradient(135deg,#1e293b,#020617);
   display:flex;
   align-items:center;
   justify-content:center;
-  color:#94a3b8;
-  font-size:14px;
+  color:var(--muted);
+  background:linear-gradient(135deg,#1e293b,#020617);
 }
 
-.card-info{
+.info{
   padding:10px;
 }
 
-.card-info h4{
+.info h4{
   font-size:14px;
-  font-weight:600;
-  margin-bottom:4px;
 }
-
-.card-info p{
+.info p{
   font-size:12px;
   color:var(--muted);
 }
 
-/* BOTTOM NAV (optional feel like app) */
+/* ===== BOTTOM NAV (3D ICON STYLE) ===== */
 .bottom-nav{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  background:#0b0f1a;
-  border-top:1px solid #1f253a;
+  background:rgba(7,11,20,.9);
+  backdrop-filter: blur(14px);
   display:flex;
   justify-content:space-around;
   padding:10px 0;
+  border-top:1px solid rgba(255,255,255,.05);
 }
 
-.bottom-nav span{
-  font-size:13px;
+.nav-item{
+  text-align:center;
+  font-size:12px;
   color:var(--muted);
+}
+
+.nav-icon{
+  width:42px;
+  height:42px;
+  margin:auto;
+  margin-bottom:4px;
+  border-radius:14px;
+  background:linear-gradient(145deg,#0f172a,#020617);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:
+    0 6px 18px rgba(0,0,0,.7),
+    inset 0 0 0 1px rgba(255,255,255,.05);
+  font-size:18px;
+}
+.active .nav-icon{
+  background:linear-gradient(135deg,#22c55e,#38bdf8);
+  color:#020617;
 }
 </style>
 </head>
@@ -126,49 +171,25 @@ header{
 
 <header>
   <div class="logo">MR2PAY</div>
-  <button class="login-btn">Login</button>
+  <div class="search">
+    <input placeholder="Search creators, reels..." />
+  </div>
+  <button class="login">Login</button>
 </header>
 
 <section class="feed">
-  <!-- Reel Card -->
-  <div class="card">
-    <div class="thumb">Reel Preview</div>
-    <div class="card-info">
-      <h4>Funny Reel 😂</h4>
-      <p>12.4k views</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="thumb">Reel Preview</div>
-    <div class="card-info">
-      <h4>Motivation 🔥</h4>
-      <p>9.8k views</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="thumb">Reel Preview</div>
-    <div class="card-info">
-      <h4>Life Hack 💡</h4>
-      <p>18.1k views</p>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="thumb">Reel Preview</div>
-    <div class="card-info">
-      <h4>Sad Story 💔</h4>
-      <p>7.2k views</p>
-    </div>
-  </div>
+  <div class="card"><div class="thumb">Reel</div><div class="info"><h4>Funny Reel</h4><p>12k views</p></div></div>
+  <div class="card"><div class="thumb">Reel</div><div class="info"><h4>Motivation</h4><p>9k views</p></div></div>
+  <div class="card"><div class="thumb">Reel</div><div class="info"><h4>Story</h4><p>18k views</p></div></div>
+  <div class="card"><div class="thumb">Reel</div><div class="info"><h4>Life Hack</h4><p>7k views</p></div></div>
 </section>
 
 <div class="bottom-nav">
-  <span>Home</span>
-  <span>Explore</span>
-  <span>Upload</span>
-  <span>Profile</span>
+  <div class="nav-item active"><div class="nav-icon">🏠</div>Home</div>
+  <div class="nav-item"><div class="nav-icon">🔍</div>Search</div>
+  <div class="nav-item"><div class="nav-icon">🔥</div>Join Crew</div>
+  <div class="nav-item"><div class="nav-icon">➕</div>Upload</div>
+  <div class="nav-item"><div class="nav-icon">👤</div>Profile</div>
 </div>
 
 </body>
